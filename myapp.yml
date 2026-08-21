@@ -26,15 +26,15 @@ spec:
               name: mongo-secret
               key: mongo-user
         - name: USER_PWD
-            valueFrom:
-              secretKeyRef:
-                name: mongo-secret
-                key: mongo-password
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-password
         - name: DB_URL
-            valueFrom:
-              mongoConfigKeyRef:
-                name: mongo-config
-                key: mongo-url
+          valueFrom:
+            configMapKeyRef:
+              name: mongo-config
+              key: mongo-url
 
 ---
 apiVersion: v1
@@ -49,5 +49,5 @@ spec:
     - protocol: TCP
       port: 3000
       targetPort: 3000
-      nodeport: 30000
+      nodePort: 30100
 
